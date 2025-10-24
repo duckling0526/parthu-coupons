@@ -1,120 +1,122 @@
-/* === General Page Setup === */
 body {
   background-color: #a6d3f5;
+  font-family: 'Patrick Hand', cursive;
   color: #102045;
-  font-family: 'Indie Flower', cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-/* === Centered Container === */
-.centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  max-width: 90%;
+h1 {
+  font-family: 'Indie Flower', cursive;
+  margin-top: 40px;
+  font-size: 2.2rem;
 }
 
-/* === Cute Button Style === */
-.cute-button {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.2rem;
-  background-color: #102045;
-  color: white;
-  border: 4px solid white;
-  border-radius: 20px;
-  padding: 12px 24px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.cute-button:hover {
-  transform: scale(1.05);
-  background-color: #153066;
-}
-
-/* === Pastel Colors for Coupons === */
-.pastel-1 { background-color: #f9c6c9; }  /* Pink */
-.pastel-2 { background-color: #fdf0c2; }  /* Yellow */
-.pastel-3 { background-color: #d8eac9; }  /* Light Green */
-.pastel-4 { background-color: #ffe0b2; }  /* Peach/Orange */
-.pastel-5 { background-color: #e0d4f7; }  /* Purple */
-.pastel-6 { background-color: #fff8e1; }  /* Off-white */
-.pastel-7 { background-color: #b3e5fc; }  /* Soft Blue */
-.pastel-8 { background-color: #ffecf0; }  /* Light Rose */
-
-/* === Card Flip Animation === */
-.card {
-  width: 300px;
-  height: 180px;
+.coupon {
   perspective: 1000px;
-  margin: 30px auto;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 20px;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
 }
 
 .front, .back {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   backface-visibility: hidden;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-  font-size: 1.2rem;
-  font-family: 'Patrick Hand', cursive;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.6s ease;
+  box-sizing: border-box;
+  color: #102045;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
 .front {
-  transform: rotateY(0deg);
+  background-color: #fbd0f5; /* default fallback */
 }
 
 .back {
+  background-color: #fbd0f5; /* same default, but gets overwritten via JS */
   transform: rotateY(180deg);
-  position: absolute;
-  top: 0;
-  left: 0;
+  flex-direction: column;
 }
 
-/* This will be toggled in JavaScript */
-.card.flipped .front {
-  transform: rotateY(180deg);
+#coupon-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
-.card.flipped .back {
-  transform: rotateY(360deg);
+#coupon-desc {
+  font-size: 1.2rem;
 }
 
-/* === Raffle Page Button Row === */
 .button-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
-.button-row button {
+button {
   font-family: 'Patrick Hand', cursive;
-  font-size: 1.1rem;
+  font-size: 1rem;
   background-color: #102045;
   color: white;
-  border: 4px solid white;
-  border-radius: 20px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  border: 3px solid white;
+  border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  max-width: 80vw;
+  transition: background-color 0.3s ease;
+  max-width: 280px;
+  width: fit-content;
+  white-space: nowrap;
 }
 
-.button-row button:hover {
-  background-color: #1c3266;
-  transform: scale(1.05);
+button:hover {
+  background-color: #2a3c6e;
+}
+
+@media (max-width: 500px) {
+  .card {
+    height: 200px;
+  }
+
+  #coupon-title {
+    font-size: 1.4rem;
+  }
+
+  #coupon-desc {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
 }
