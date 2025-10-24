@@ -1,93 +1,103 @@
+/* Base styling */
 body {
-  margin: 0;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Indie Flower', cursive;
   background-color: #a6d3f5;
   color: #102045;
-}
-
-/* Centered container for index.html */
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
+  margin: 0;
 }
 
-/* Coupon card wrapper */
-.card-container {
+/* Title */
+h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* Coupon Card Wrapper */
+.coupon-container {
   perspective: 1000px;
-  margin: 40px auto;
-  width: 90%;
-  max-width: 600px;
+  display: inline-block;
+  margin-bottom: 30px;
 }
 
-/* Flipping card styles */
+/* Actual flipping card */
 .coupon-card {
-  width: 100%;
-  height: 300px;
+  width: 350px;
+  height: 230px;
   border-radius: 25px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  background-color: #f5efd0; /* this is now the full card color */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.8s;
   transform-style: preserve-3d;
   position: relative;
+  margin: 0 auto;
 }
 
-/* Ensure front and back both fill the full card */
-.card-front,
-.card-back {
+/* Flipping effect */
+.coupon-card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back - now transparent so the .coupon-card color shows through */
+.coupon-front, .coupon-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 25px;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Indie Flower', cursive;
-  font-size: 2rem;
-  text-align: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Back face flip */
-.card-back {
+/* Only front is visible initially */
+.coupon-front {
+  transform: rotateY(0deg);
+}
+
+/* Back is rotated */
+.coupon-back {
   transform: rotateY(180deg);
 }
 
-/* Flip effect trigger */
-.card-container.flipped .coupon-card {
-  transform: rotateY(180deg);
+/* Coupon content */
+.coupon-title {
+  font-size: 1.4em;
+  margin: 0;
+  font-weight: bold;
+  color: #102045;
+  word-break: break-word;
 }
 
-/* Buttons below the coupon */
+.coupon-description {
+  font-size: 1em;
+  margin-top: 15px;
+  font-family: 'Patrick Hand', cursive;
+  color: #102045;
+}
+
+/* Buttons */
+.button-container {
+  margin-top: 20px;
+}
+
 button {
+  font-family: 'Patrick Hand', cursive;
   background-color: #102045;
   color: white;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.1rem;
-  padding: 12px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 12px;
+  border: 3px dashed white;
+  border-radius: 30px;
+  padding: 8px 18px;
+  margin: 5px;
   cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #1e3463;
-}
-
-/* Title styling */
-h1, h2 {
-  font-family: 'Indie Flower', cursive;
-  margin: 10px 0;
-}
-
-/* Hide elements when needed */
-.hidden {
-  display: none;
+  background-color: #0d1830;
 }
