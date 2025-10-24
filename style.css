@@ -1,80 +1,63 @@
-/* =========================
-   GENERAL PAGE STYLING
-========================= */
 body {
   background-color: #a6d3f5;
   font-family: 'Patrick Hand', cursive;
   color: #102045;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
   margin: 0;
+  text-align: center;
 }
 
-/* =========================
-   HEADINGS
-========================= */
+/* Center containers */
+.centered, .raffle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Headings */
 h1, h2 {
   font-family: 'Indie Flower', cursive;
   margin: 8px 0;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-button {
+/* Cute button style */
+.cute-button {
   background-color: #102045;
   color: white;
   font-weight: bold;
-  font-family: 'Patrick Hand', cursive;
   border: 3px solid white;
-  border-radius: 25px;
-  padding: 10px 25px;
-  margin: 10px;
+  border-radius: 35px;
+  padding: 10px 28px;
+  margin: 12px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: 0.25s;
+  font-size: 1rem;
 }
 
-button:hover {
+.cute-button:hover {
   background-color: #18367a;
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
-/* =========================
-   HOMEPAGE CENTERING
-========================= */
-.center-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* =========================
-   COUPON CARD
-========================= */
-.coupon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-  margin-top: 30px;
-}
-
+/* Card container */
 .coupon {
-  width: 320px;
-  height: 220px;
+  perspective: 1000px;
+  margin: 30px 0;
+}
+
+.card {
+  width: 380px;
+  height: 260px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease;
+  transition: transform 0.7s ease;
   cursor: pointer;
+  border-radius: 22px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
 }
 
-.coupon.flipped {
+.card.flipped {
   transform: rotateY(180deg);
 }
 
@@ -83,27 +66,25 @@ button:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 22px;
   backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   padding: 20px;
+  flex-direction: column;
   box-sizing: border-box;
+  font-size: 1.4rem;
   color: #102045;
-  font-size: 1.3rem;
 }
 
-/* Front pastel background */
-.front {
-  background-color: var(--coupon-color, #fde2e4);
-}
-
-/* Back pastel background */
+/* Back side rotates */
 .back {
-  background-color: var(--coupon-color, #fde2e4);
   transform: rotateY(180deg);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+}
+
+/* Button Row */
+.button-row {
+  margin-top: 15px;
 }
