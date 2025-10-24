@@ -26,9 +26,7 @@ const coupons = [
   { title: "🎮 gamer gf mode unlocked", description: "i play any online game with u (even if i suck) and give u my full support, live commentary, and terrible aim.", color: "#d0eaf5" }, 
   { title: "🎯 dare card", description: "redeem this to dare me to do literally anything over facetime. (fine print: nothing illegal!!!!)", color: "#f0f5d8" }, 
   { title: "🛏️ sleepy cuddles", description: "we sit togther in bed under the covers and ramble about random things that have been on our minds all day. peak nightime activities", color: "#d0f5f0" }, 
-  { title: "🍕 custom date night theme", description: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows", color: "#f5e5d0" }, 
-  
-  // ... (ALL THE REST STAY AS YOU LISTED EXACTLY — do not remove them)
+  { title: "🍕 custom date night theme", description: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows", color: "#f5e5d0" }
 ];
 
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
@@ -36,39 +34,31 @@ let currentCoupon = null;
 
 function showRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
-  const card = document.querySelector(".card");
-  const front = document.querySelector(".front");
-  const back = document.querySelector(".back");
+  const card = document.querySelector(".coupon-card");
+  const front = document.getElementById("front-side");
+  const back = document.getElementById("back-side");
 
   if (available.length === 0) {
     front.innerHTML = "no more coupons 🥺";
     back.innerHTML = "call niku for more coupons :*";
-    document.getElementById("pick-btn").style.display = "none";
-    document.getElementById("reroll-btn").style.display = "none";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
-  card.classList.remove("flipped");
-  card.style.backgroundColor = currentCoupon.color;
 
+  card.style.setProperty("--coupon-color", currentCoupon.color);
   front.innerHTML = currentCoupon.title;
   back.innerHTML = currentCoupon.description;
+
+  document.querySelector(".flip-inner").classList.remove("flipped");
 }
 
 function flipCard() {
-  document.querySelector(".card").classList.toggle("flipped");
-}
-
-function lockCoupon() {
-  usedCoupons.push(currentCoupon);
-  localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
-  document.getElementById("share-btn").style.display = "inline-block";
+  document.querySelector(".flip-inner").classList.toggle("flipped");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".card").addEventListener("click", flipCard);
+  document.querySelector(".coupon-card").addEventListener("click", flipCard);
   document.getElementById("reroll-btn").addEventListener("click", showRandomCoupon);
-  document.getElementById("pick-btn").addEventListener("click", lockCoupon);
   showRandomCoupon();
 });
