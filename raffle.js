@@ -20,7 +20,7 @@ const coupons = [
   { title: "📖 bedtime story time", description: "i read u a story. could be soft. could be sci-fi. could be me rambling abt my day", color: "#f0d0f5" },
   { title: "😈 roast me night", description: "u get 15 minutes to roast me & i can't retaliate (dangerous card)", color: "#f5d0d0" },
   { title: "👩🏽‍🍳 chaotic cooking night", description: "we pick a recipe & facetime cook it. disaster is very possible", color: "#d0f5ef" },
-  { title: "🛫 future planning session", description: "we plan trips, our wedding color palette, our cat names idk be delulu w me", color: "#e0d0f5" },
+  { title: "🛫 future planning session", description: "we plan trips, our wedding color palette, our (very many) pet's names idk be delulu w me", color: "#e0d0f5" },
   { title: "🎨 i draw u", description: "i make a doodle of u from memory. accuracy not guaranteed. love is.", color: "#d0f0f5" },
   { title: "🍷 truth or sip", description: "we play truth or sip w blueberry wine and cause emotional damage (cute)", color: "#f5d0e2" },
   { title: "🎮 gamer gf mode", description: "i play a game w u even tho i suck. full supportive commentary. terrible aim", color: "#d0eaf5" },
