@@ -1,68 +1,185 @@
+// === ALL YOUR COUPONS ===
 const coupons = [
-  { title: "🍱 virtual dinner date", desc: "i send u food or we go out to a restaurant... we eat on facetime... BONUS if we pretend we’re in like paris or something" },
-  { title: "🛌 fall asleep on call pass", desc: "redeem when u just wanna sleep with me on ft while i work since i always get to do that (and i love it)" },
-  { title: "🎧 custom playlist", desc: "i make u a vibey-ahh playlist. could be romantic. could be cursed. whatever my prince charming's heart desires" },
-  { title: "🪩 dance party for two", desc: "i play music and dance on ft. u have to rate my moves out of 10. (hint: always 10)" },
-  { title: "🚨 i miss u emergency call", desc: "redeemable anytime. no questions. even if it’s 3am. especially if it’s 3am. (yes i will answer half-asleep)" },
-  { title: "📦 surprise care drop", desc: "i send u a lil mystery box w snacks, notes, or something ridiculous i found at target" },
-  { title: "🎙️ voice note confession", desc: "i send u a random voice note telling u something i love abt u (could be soft or completely unhinged)" },
-  { title: "💃 private concert ticket", desc: "i sing u a song over ft like a lounge singer w zero shame. tips accepted in kisses" },
-  { title: "🕯️ cozy night in", desc: "we light candles, get under blankets, and pretend the internet doesn’t exist for a lil while" },
-  { title: "📸 random pic drop", desc: "i send u a spontaneous pic of me. could be cute. could be cursed. ur gamble" },
-  { title: "🥰 one flirty paragraph", desc: "u get a whole paragraph of me being down bad. written like a wattpad author in love" },
-  { title: "💌 surprise letter", desc: "i send u a letter. handwritten or typed. maybe (very possibly) chaotic. but most definitely from my heart" },
-  { title: "🧠 deep talk night", desc: "u ask me anything. i ask u anything. we solve the many many mysteries of the infinite universe together" },
-  { title: "📸 10/10 insta bf", desc: "i hype u up, i assist in picking out ur outfits, editing ur pics, and comment on 'em like ur #1 fan (bc i AM)" },
-  { title: "🍿 facetime movie night", desc: "i stream the movie. we talk over half of it. u fall asleep. we get .. distracted.. i love u" },
-  { title: "🛍️ mini gift drop", desc: "u pick a lil thing (under $20) and i surprise-send it like a lil fairy gf" },
-  { title: "🌄 morning hype texts", desc: "for one week straight i send u chaotic and sweet gm texts so ur day starts with love and pain" },
-  { title: "📖 bedtime story time", desc: "i read u a story. could be soft. could be like.. idk sci-fi. could be me rambling abt my day" },
-  { title: "😈 roast me night", desc: "u get 15 whole minutes to roast me and i am not allowed to retaliate. dangerous coupon (very dangerous)" },
-  { title: "👩🏽‍🍳 chaotic cooking night", desc: "we pick a random recipe and facetime cook it together. even if it's a disaster" },
-  { title: "🛫 future planning session", desc: "we sit down and plan our next visit, imaginary honeymoon, or baby names idk just be delulu with me" },
-  { title: "🧽 errand buddy pass", desc: "facetime me while u do laundry or groceries and i’ll keep u company like a lil background girlfriend" },
-  { title: "🎨 i draw u", desc: "i make a doodle of u from memory. accuracy not guaranteed. but my love is" },
-  { title: "🍷 truth or sip (blueberry wine edition)", desc: "we play a spicy lil game of truth or sip (with that blueberry wine we loved so much) and u never get to know... well... i’ll probably tell u anyways.. just an excuse for us to get drunk together ;)" },
-  { title: "🎮 gamer gf mode unlocked", desc: "i play any online game with u (even if i suck) and give u my full support, live commentary, and terrible aim. bonus if u call me ur support main 💋" },
-  { title: "🎯 dare card", desc: "redeem this to dare me to do literally anything over facetime. (fine print: nothing illegal!!!!)" },
-  { title: "🛏️ sleepy cuddles talk", desc: "i talk to u in my sleepy voice and ramble about random things while we both lay in bed. 10/10 serotonin vibes" },
-  { title: "🍕 custom date night theme", desc: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows" }
+  {
+    title: "🍱 virtual dinner date",
+    description: "i send u food or we go out to a restaurant... we eat on facetime... BONUS if we pretend we’re in like paris or something",
+    color: "#fbd0f5"
+  },
+  {
+    title: "🛌 fall asleep on call pass",
+    description: "redeem when u just wanna sleep with me on ft while i work since i always get to do that (and i love it)",
+    color: "#d0f4f5"
+  },
+  {
+    title: "🎧 custom playlist",
+    description: "i make u a vibey-ahh playlist. could be romantic. could be cursed. whatever my prince charming's heart desires",
+    color: "#f5efd0"
+  },
+  {
+    title: "🪩 dance party for two",
+    description: "i play music and dance on ft. u have to rate my moves out of 10. (hint: always 10)",
+    color: "#fbd9d0"
+  },
+  {
+    title: "🚨 i miss u emergency call",
+    description: "redeemable anytime. no questions. even if it’s 3am. especially if it’s 3am. (yes i will answer half-asleep)",
+    color: "#d0e4f5"
+  },
+  {
+    title: "📦 surprise care drop",
+    description: "i send u a lil mystery box w snacks, notes, or something ridiculous i found at target",
+    color: "#f5d0e4"
+  },
+  {
+    title: "🎙️ voice note confession",
+    description: "i send u a random voice note telling u something i love abt u (could be soft or completely unhinged)",
+    color: "#d6f5d0"
+  },
+  {
+    title: "💃 private concert ticket",
+    description: "i sing u a song over ft like a lounge singer w zero shame. tips accepted in kisses",
+    color: "#e2d0f5"
+  },
+  {
+    title: "🕯️ cozy night in",
+    description: "we light candles, get under blankets, and pretend the internet doesn’t exist for a lil while",
+    color: "#f5f2d0"
+  },
+  {
+    title: "📸 random pic drop",
+    description: "i send u a spontaneous pic of me. could be cute. could be cursed. ur gamble",
+    color: "#d0f5ea"
+  },
+  {
+    title: "🥰 one flirty paragraph",
+    description: "u get a whole paragraph of me being down bad. written like a wattpad author in love",
+    color: "#f5d0f0"
+  },
+  {
+    title: "💌 surprise letter",
+    description: "i send u a letter. handwritten or typed. maybe (very possibly) chaotic. but most definitely from my heart",
+    color: "#f0f5d0"
+  },
+  {
+    title: "🧠 deep talk night",
+    description: "u ask me anything. i ask u anything. we solve the many many mysteries of the infinite universe together",
+    color: "#d0f5f5"
+  },
+  {
+    title: "📸 10/10 insta bf",
+    description: "i hype u up, i assist in picking out ur outfits, editing ur pics, and comment on 'em like ur #1 fan (bc i AM)",
+    color: "#e4d0f5"
+  },
+  {
+    title: "🍿 facetime movie night",
+    description: "i stream the movie. we talk over half of it. u fall asleep. we get .. distracted.. i love u",
+    color: "#f5d8d0"
+  },
+  {
+    title: "🛍️ mini gift drop",
+    description: "u pick a lil thing (under $20) and i surprise-send it like a lil fairy gf",
+    color: "#d0f5db"
+  },
+  {
+    title: "🌄 morning hype texts",
+    description: "for one week straight i send u chaotic and sweet gm texts so ur day starts with love and pain",
+    color: "#f5f0d0"
+  },
+  {
+    title: "📖 bedtime story time",
+    description: "i read u a story. could be soft. could be like.. idk sci-fi. could be me rambling abt my day",
+    color: "#f0d0f5"
+  },
+  {
+    title: "😈 roast me night",
+    description: "u get 15 whole minutes to roast me and i am not allowed to retaliate. dangerous coupon (very dangerous)",
+    color: "#f5d0d0"
+  },
+  {
+    title: "👩🏽‍🍳 chaotic cooking night",
+    description: "we pick a random recipe and facetime cook it together. even if it's a disaster",
+    color: "#d0f5ef"
+  },
+  {
+    title: "🛫 future planning session",
+    description: "we sit down and plan our next visit, imaginary honeymoon, or baby names idk just be delulu with me",
+    color: "#e0d0f5"
+  },
+  {
+    title: "🧽 errand buddy pass",
+    description: "facetime me while u do laundry or groceries and i’ll keep u company like a lil background girlfriend",
+    color: "#f5e0d0"
+  },
+  {
+    title: "🎨 i draw u",
+    description: "i make a doodle of u from memory. accuracy not guaranteed. but my love is",
+    color: "#d0f0f5"
+  },
+  {
+    title: "🍷 truth or sip (blueberry wine edition)",
+    description: "we play a spicy lil game of truth or sip (with that blueberry wine we loved so much) and u never get to know... well... i’ll probably tell u anyways.. just an excuse for us to get drunk together ;)",
+    color: "#f5d0e2"
+  },
+  {
+    title: "🎮 gamer gf mode unlocked",
+    description: "i play any online game with u (even if i suck) and give u my full support, live commentary, and terrible aim. bonus if u call me ur support main 💋",
+    color: "#d0eaf5"
+  },
+  {
+    title: "🎯 dare card",
+    description: "redeem this to dare me to do literally anything over facetime. (fine print: nothing illegal!!!!)",
+    color: "#f0f5d8"
+  },
+  {
+    title: "🛏️ sleepy cuddles talk",
+    description: "i talk to u in my sleepy voice and ramble about random things while we both lay in bed. 10/10 serotonin vibes",
+    color: "#d0f5f0"
+  },
+  {
+    title: "🍕 custom date night theme",
+    description: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows",
+    color: "#f5e5d0"
+  }
 ];
 
+// === STATE ===
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
 let flipped = false;
 
+// === FUNCTIONS ===
 function getRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
-  const couponTitle = document.getElementById("coupon-title");
-  const couponDesc = document.getElementById("coupon-desc");
-  const card = document.querySelector(".coupon .card");
+  const card = document.querySelector(".card");
+  const front = document.querySelector(".front");
+  const back = document.querySelector(".back");
 
   if (available.length === 0) {
-    couponTitle.innerText = "no more coupons available!";
-    couponDesc.innerText = "call niku for more coupons :*";
+    front.innerHTML = "<h2>no more coupons available!</h2>";
+    back.innerHTML = "<p>call niku for more coupons :*</p>";
+    document.getElementById("pick-btn").style.display = "none";
+    document.getElementById("reroll-btn").style.display = "none";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
-
-  couponTitle.innerText = currentCoupon.title;
-  couponDesc.innerText = currentCoupon.desc;
-  card.style.transform = "rotateY(0deg)";
-
   flipped = false;
-  document.getElementById("pick-btn").style.display = "inline-block";
-  document.getElementById("reroll-btn").style.display = "inline-block";
-  document.getElementById("share-btn").style.display = "none";
+  card.classList.remove("flipped");
+
+  // Update front of card (title)
+  front.innerHTML = `<h2>${currentCoupon.title}</h2>`;
+  // Update back of card (description)
+  back.innerHTML = `<p>${currentCoupon.description}</p>`;
+
+  // Update background color
+  card.style.backgroundColor = currentCoupon.color;
 }
 
 function flipCard() {
-  if (!flipped && currentCoupon) {
-    const card = document.querySelector(".coupon .card");
-    card.style.transform = "rotateY(180deg)";
-    flipped = true;
-  }
+  if (!currentCoupon) return;
+  const card = document.querySelector(".card");
+  card.classList.toggle("flipped");
+  flipped = !flipped;
 }
 
 function lockCoupon() {
@@ -75,54 +192,11 @@ function lockCoupon() {
   }
 }
 
-function shareCoupon() {
-  const title = currentCoupon.title;
-  const desc = currentCoupon.desc;
-  const imageText = `${title}\n\n${desc}`;
-
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = 600;
-  canvas.height = 400;
-
-  // background
-  ctx.fillStyle = "#fdf6ff";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // title
-  ctx.fillStyle = "#102045";
-  ctx.font = "24px 'Patrick Hand'";
-  ctx.fillText(title, 20, 60);
-
-  // desc (wrapped)
-  ctx.font = "20px 'Indie Flower'";
-  const words = desc.split(" ");
-  let line = "", y = 100;
-
-  for (let i = 0; i < words.length; i++) {
-    let testLine = line + words[i] + " ";
-    let metrics = ctx.measureText(testLine);
-    if (metrics.width > 550) {
-      ctx.fillText(line, 20, y);
-      line = words[i] + " ";
-      y += 28;
-    } else {
-      line = testLine;
-    }
-  }
-  ctx.fillText(line, 20, y);
-
-  // create image and trigger download
-  const link = document.createElement("a");
-  link.download = "coupon.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
-}
-
+// === INIT ===
 document.addEventListener("DOMContentLoaded", () => {
-  getRandomCoupon();
+  document.querySelector(".card").addEventListener("click", flipCard);
   document.getElementById("reroll-btn").addEventListener("click", getRandomCoupon);
   document.getElementById("pick-btn").addEventListener("click", lockCoupon);
-  document.getElementById("share-btn").addEventListener("click", shareCoupon);
+
+  getRandomCoupon();
 });
