@@ -1,103 +1,99 @@
-/* Base styling */
+/* General Page Styling */
 body {
-  font-family: 'Indie Flower', cursive;
-  background-color: #a6d3f5;
-  color: #102045;
-  text-align: center;
-  padding: 40px;
+  font-family: "Comic Neue", cursive;
+  background-color: #a4cff5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   margin: 0;
+  text-align: center;
 }
 
-/* Title */
-h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
+/* Headings */
+h1, h2, h3 {
+  color: #1a1a1a;
+  margin: 10px;
 }
 
-/* Coupon Card Wrapper */
+/* Buttons */
+button {
+  background-color: #0d2040;
+  color: white;
+  border: 3px solid white; /* nice bold white border */
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-family: "Comic Neue", cursive;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #193566;
+  transform: scale(1.05);
+}
+
+/* Coupon Container */
 .coupon-container {
   perspective: 1000px;
-  display: inline-block;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
-/* Actual flipping card */
-.coupon-card {
-  width: 350px;
-  height: 230px;
-  border-radius: 25px;
-  background-color: #f5efd0; /* this is now the full card color */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+/* Coupon Card */
+.coupon {
+  width: 300px;
+  height: 180px;
   position: relative;
-  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
-/* Flipping effect */
-.coupon-card.flipped {
+.coupon.flipped {
   transform: rotateY(180deg);
 }
 
-/* Front & Back - now transparent so the .coupon-card color shows through */
-.coupon-front, .coupon-back {
+/* Front and Back of Coupon */
+.coupon .front,
+.coupon .back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
+  padding: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: #0d2040;
+  font-size: 18px;
 }
 
-/* Only front is visible initially */
-.coupon-front {
-  transform: rotateY(0deg);
+/* Front side color */
+.coupon .front {
+  background-color: #f9c8dc; /* pink pastel */
 }
 
-/* Back is rotated */
-.coupon-back {
+/* Back side color */
+.coupon .back {
+  background-color: #ffeebd; /* light yellow pastel */
   transform: rotateY(180deg);
 }
 
-/* Coupon content */
-.coupon-title {
-  font-size: 1.4em;
-  margin: 0;
-  font-weight: bold;
-  color: #102045;
-  word-break: break-word;
-}
-
-.coupon-description {
-  font-size: 1em;
+/* Description text under coupon */
+.description {
   margin-top: 15px;
-  font-family: 'Patrick Hand', cursive;
-  color: #102045;
-}
-
-/* Buttons */
-.button-container {
-  margin-top: 20px;
-}
-
-button {
-  font-family: 'Patrick Hand', cursive;
-  background-color: #102045;
-  color: white;
-  border: 3px dashed white;
-  border-radius: 30px;
-  padding: 8px 18px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0d1830;
+  font-size: 14px;
+  color: #1a1a1a;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
 }
