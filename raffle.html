@@ -9,23 +9,23 @@
 </head>
 <body>
   <div class="container">
-    <h1>💝 randomly generate your coupon 💝</h1>
+    <h1>💝 your random coupon 💝</h1>
 
     <div class="coupon">
-      <div class="card" onclick="flipCard()">
-        <div class="front">
-          <h2 id="coupon-title">click to reveal your coupon</h2>
-        </div>
-        <div class="back" id="coupon-back">
-          <!-- JS will fill in description -->
+      <div class="card" id="card">
+        <div class="card-inner">
+          <div class="front" id="coupon-title">click to reveal your coupon</div>
+          <div class="back">
+            <p id="coupon-desc"></p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="button-row">
+    <div class="button-group">
       <button id="reroll-btn">pick a different one</button>
       <button id="pick-btn">i choose this one!</button>
-      <button id="share-btn" style="display:none;">share this with niku to collect! &lt;3</button>
+      <button id="share-btn" style="display: none;">share this with niku to collect! &lt;3</button>
     </div>
   </div>
 
