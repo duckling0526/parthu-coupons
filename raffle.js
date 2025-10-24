@@ -30,30 +30,37 @@ const coupons = [
   { title: "🍕 custom date night theme", desc: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows" }
 ];
 
-// === STATE MANAGEMENT ===
+const pastelClasses = ['pastel-1', 'pastel-2', 'pastel-3', 'pastel-4', 'pastel-5', 'pastel-6', 'pastel-7', 'pastel-8'];
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
 
-// === FUNCTIONS ===
 function getRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
-  const couponText = document.getElementById("coupon-title");
-  const couponDesc = document.getElementById("coupon-desc");
+  const container = document.querySelector(".coupon");
+  const front = document.getElementById("coupon-title");
+  const back = document.getElementById("coupon-desc");
 
   if (available.length === 0) {
-    couponText.innerText = "no more coupons available!";
-    couponDesc.innerText = "call niku for more coupons :*";
+    front.innerText = "no more coupons available!";
+    back.innerText = "call niku for more coupons :*";
     document.getElementById("pick-btn").style.display = "none";
     document.getElementById("reroll-btn").style.display = "none";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
-  couponText.innerText = currentCoupon.title;
-  couponDesc.innerText = currentCoupon.desc;
+  const newColor = pastelClasses[Math.floor(Math.random() * pastelClasses.length)];
 
-  // flip animation
-  document.querySelector(".coupon .card").style.transform = "rotateY(180deg)";
+  container.className = `coupon ${newColor} card flip`; // apply new color + trigger flip
+
+  // Update text
+  front.innerText = currentCoupon.title;
+  back.innerText = currentCoupon.desc;
+
+  // Reset button visibility
+  document.getElementById("pick-btn").style.display = "inline-block";
+  document.getElementById("reroll-btn").style.display = "inline-block";
+  document.getElementById("share-btn").style.display = "none";
 }
 
 function lockCoupon() {
@@ -69,4 +76,5 @@ function lockCoupon() {
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("reroll-btn").addEventListener("click", getRandomCoupon);
   document.getElementById("pick-btn").addEventListener("click", lockCoupon);
+  getRandomCoupon();
 });
