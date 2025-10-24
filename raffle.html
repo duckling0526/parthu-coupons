@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Coupon Raffle</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <h1>💝 randomly generate your coupon 💝</h1>
 
-    <div class="coupon" onclick="flipCard()">
-      <div class="card">
+    <div class="coupon">
+      <div class="card" onclick="flipCard()">
         <div class="front">
-          <h2 id="coupon-title"></h2>
+          <h2 id="coupon-title">click to reveal your coupon</h2>
         </div>
-        <div class="back">
-          <p id="coupon-desc"></p>
+        <div class="back" id="coupon-back">
+          <!-- JS will fill in description -->
         </div>
       </div>
     </div>
