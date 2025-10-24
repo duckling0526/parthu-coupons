@@ -14,14 +14,14 @@ body {
 /* Headings */
 h1, h2, h3 {
   color: #1a1a1a;
-  margin: 10px;
+  margin: 100px;
 }
 
 /* Buttons */
 button {
   background-color: #0d2040;
   color: white;
-  border: 3px solid white; /* nice bold white border */
+  border: 4px  white; /* nice bold white border */
   border-radius: 25px;
   padding: 10px 25px;
   font-size: 16px;
@@ -42,7 +42,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 130px;
 }
 
 /* Coupon Card */
