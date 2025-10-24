@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Coupon Raffle</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1>💝 your random coupon 💝</h1>
+    <h1>💝 randomly generate your coupon 💝</h1>
 
-    <div class="coupon card pastel-1">
-      <div class="front">
-        <p>click below to open your gift!</p>
-      </div>
-      <div class="back">
-        <h2 id="coupon-title"></h2>
-        <p id="coupon-desc"></p>
+    <div class="coupon" onclick="flipCard()">
+      <div class="card">
+        <div class="front">
+          <h2 id="coupon-title"></h2>
+        </div>
+        <div class="back">
+          <p id="coupon-desc"></p>
+        </div>
       </div>
     </div>
 
