@@ -34,7 +34,7 @@ let currentCoupon = null;
 
 function showRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
-  const card = document.querySelector(".coupon-card");
+  const card = document.querySelector(".flip-inner");
   const front = document.getElementById("front-side");
   const back = document.getElementById("back-side");
 
@@ -45,20 +45,26 @@ function showRandomCoupon() {
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
+  document.documentElement.style.setProperty("--coupon-color", currentCoupon.color);
 
-  card.style.setProperty("--coupon-color", currentCoupon.color);
   front.innerHTML = currentCoupon.title;
   back.innerHTML = currentCoupon.description;
-
-  document.querySelector(".flip-inner").classList.remove("flipped");
+  card.classList.remove("flipped");
 }
 
 function flipCard() {
   document.querySelector(".flip-inner").classList.toggle("flipped");
 }
 
+function lockCoupon() {
+  usedCoupons.push(currentCoupon);
+  localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
+  document.getElementById("share-btn").style.display = "inline-block";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".coupon-card").addEventListener("click", flipCard);
   document.getElementById("reroll-btn").addEventListener("click", showRandomCoupon);
+  document.getElementById("pick-btn").addEventListener("click", lockCoupon);
   showRandomCoupon();
 });
