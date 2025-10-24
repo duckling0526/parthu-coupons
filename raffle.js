@@ -1,4 +1,3 @@
-// === ALL YOUR COUPONS ===
 const coupons = [
   { title: "🍱 virtual dinner date", desc: "i send u food or we go out to a restaurant... we eat on facetime... BONUS if we pretend we’re in like paris or something" },
   { title: "🛌 fall asleep on call pass", desc: "redeem when u just wanna sleep with me on ft while i work since i always get to do that (and i love it)" },
@@ -30,37 +29,40 @@ const coupons = [
   { title: "🍕 custom date night theme", desc: "u pick the theme. i plan the whole night. food, vibe, playlist. could be italy. could be outer space. who knows" }
 ];
 
-const pastelClasses = ['pastel-1', 'pastel-2', 'pastel-3', 'pastel-4', 'pastel-5', 'pastel-6', 'pastel-7', 'pastel-8'];
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
+let flipped = false;
 
 function getRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
-  const container = document.querySelector(".coupon");
-  const front = document.getElementById("coupon-title");
-  const back = document.getElementById("coupon-desc");
+  const couponTitle = document.getElementById("coupon-title");
+  const couponDesc = document.getElementById("coupon-desc");
+  const card = document.querySelector(".coupon .card");
 
   if (available.length === 0) {
-    front.innerText = "no more coupons available!";
-    back.innerText = "call niku for more coupons :*";
-    document.getElementById("pick-btn").style.display = "none";
-    document.getElementById("reroll-btn").style.display = "none";
+    couponTitle.innerText = "no more coupons available!";
+    couponDesc.innerText = "call niku for more coupons :*";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
-  const newColor = pastelClasses[Math.floor(Math.random() * pastelClasses.length)];
 
-  container.className = `coupon ${newColor} card flip`; // apply new color + trigger flip
+  couponTitle.innerText = currentCoupon.title;
+  couponDesc.innerText = currentCoupon.desc;
+  card.style.transform = "rotateY(0deg)";
 
-  // Update text
-  front.innerText = currentCoupon.title;
-  back.innerText = currentCoupon.desc;
-
-  // Reset button visibility
+  flipped = false;
   document.getElementById("pick-btn").style.display = "inline-block";
   document.getElementById("reroll-btn").style.display = "inline-block";
   document.getElementById("share-btn").style.display = "none";
+}
+
+function flipCard() {
+  if (!flipped && currentCoupon) {
+    const card = document.querySelector(".coupon .card");
+    card.style.transform = "rotateY(180deg)";
+    flipped = true;
+  }
 }
 
 function lockCoupon() {
@@ -73,8 +75,54 @@ function lockCoupon() {
   }
 }
 
+function shareCoupon() {
+  const title = currentCoupon.title;
+  const desc = currentCoupon.desc;
+  const imageText = `${title}\n\n${desc}`;
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 600;
+  canvas.height = 400;
+
+  // background
+  ctx.fillStyle = "#fdf6ff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // title
+  ctx.fillStyle = "#102045";
+  ctx.font = "24px 'Patrick Hand'";
+  ctx.fillText(title, 20, 60);
+
+  // desc (wrapped)
+  ctx.font = "20px 'Indie Flower'";
+  const words = desc.split(" ");
+  let line = "", y = 100;
+
+  for (let i = 0; i < words.length; i++) {
+    let testLine = line + words[i] + " ";
+    let metrics = ctx.measureText(testLine);
+    if (metrics.width > 550) {
+      ctx.fillText(line, 20, y);
+      line = words[i] + " ";
+      y += 28;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, 20, y);
+
+  // create image and trigger download
+  const link = document.createElement("a");
+  link.download = "coupon.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  getRandomCoupon();
   document.getElementById("reroll-btn").addEventListener("click", getRandomCoupon);
   document.getElementById("pick-btn").addEventListener("click", lockCoupon);
-  getRandomCoupon();
+  document.getElementById("share-btn").addEventListener("click", shareCoupon);
 });
