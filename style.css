@@ -1,122 +1,103 @@
+/* Base styling */
 body {
-  background-color: #a6d3f5;
-  font-family: 'Patrick Hand', cursive;
-  color: #102045;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-h1 {
   font-family: 'Indie Flower', cursive;
-  margin-top: 40px;
-  font-size: 2.2rem;
+  background-color: #a6d3f5;
+  color: #102045;
+  text-align: center;
+  padding: 40px;
+  margin: 0;
 }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+/* Title */
+h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
 }
 
-.coupon {
+/* Coupon Card Wrapper */
+.coupon-container {
   perspective: 1000px;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 400px;
-  height: 250px;
+  display: inline-block;
+  margin-bottom: 30px;
 }
 
-.card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transition: transform 0.6s;
+/* Actual flipping card */
+.coupon-card {
+  width: 350px;
+  height: 230px;
+  border-radius: 25px;
+  background-color: #f5efd0; /* this is now the full card color */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.8s;
   transform-style: preserve-3d;
-  border-radius: 20px;
+  position: relative;
+  margin: 0 auto;
 }
 
-.card.flipped {
+/* Flipping effect */
+.coupon-card.flipped {
   transform: rotateY(180deg);
 }
 
-.front, .back {
+/* Front & Back - now transparent so the .coupon-card color shows through */
+.coupon-front, .coupon-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  color: #102045;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
 }
 
-.front {
-  background-color: #fbd0f5; /* default fallback */
+/* Only front is visible initially */
+.coupon-front {
+  transform: rotateY(0deg);
 }
 
-.back {
-  background-color: #fbd0f5; /* same default, but gets overwritten via JS */
+/* Back is rotated */
+.coupon-back {
   transform: rotateY(180deg);
-  flex-direction: column;
 }
 
-#coupon-title {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+/* Coupon content */
+.coupon-title {
+  font-size: 1.4em;
+  margin: 0;
+  font-weight: bold;
+  color: #102045;
+  word-break: break-word;
 }
 
-#coupon-desc {
-  font-size: 1.2rem;
+.coupon-description {
+  font-size: 1em;
+  margin-top: 15px;
+  font-family: 'Patrick Hand', cursive;
+  color: #102045;
 }
 
-.button-row {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 40px;
+/* Buttons */
+.button-container {
+  margin-top: 20px;
 }
 
 button {
   font-family: 'Patrick Hand', cursive;
-  font-size: 1rem;
   background-color: #102045;
   color: white;
-  padding: 12px 20px;
-  border: 3px solid white;
-  border-radius: 25px;
+  border: 3px dashed white;
+  border-radius: 30px;
+  padding: 8px 18px;
+  margin: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  max-width: 280px;
-  width: fit-content;
-  white-space: nowrap;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #2a3c6e;
-}
-
-@media (max-width: 500px) {
-  .card {
-    height: 200px;
-  }
-
-  #coupon-title {
-    font-size: 1.4rem;
-  }
-
-  #coupon-desc {
-    font-size: 1rem;
-  }
-
-  button {
-    font-size: 0.9rem;
-    padding: 10px 16px;
-  }
+  background-color: #0d1830;
 }
