@@ -1,99 +1,71 @@
-/* General Page Styling */
+/* General page styling */
 body {
-  font-family: "Comic Neue", cursive;
-  background-color: #a4cff5;
+  background-color: #a8d3f0;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
+  color: #1a1a1a;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   margin: 0;
-  text-align: center;
 }
 
 /* Headings */
-h1, h2, h3 {
-  color: #1a1a1a;
-  margin: 100px;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
 }
 
 /* Buttons */
 button {
   background-color: #0d2040;
   color: white;
-  border: 4px  white; /* nice bold white border */
-  border-radius: 25px;
+  border: 3px solid white;
+  border-radius: 40px;
   padding: 10px 25px;
-  font-size: 16px;
-  font-family: "Comic Neue", cursive;
-  margin: 10px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  margin: 10px;
 }
 
 button:hover {
-  background-color: #193566;
+  background-color: #233d6b;
   transform: scale(1.05);
 }
 
-/* Coupon Container */
-.coupon-container {
-  perspective: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 130px;
-}
-
-/* Coupon Card */
-.coupon {
-  width: 300px;
-  height: 180px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease;
-  cursor: pointer;
-}
-
-.coupon.flipped {
-  transform: rotateY(180deg);
-}
-
-/* Front and Back of Coupon */
-.coupon .front,
-.coupon .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 15px;
+/* Center container for homepage */
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  color: #0d2040;
-  font-size: 18px;
+  height: 100vh;
 }
 
-/* Front side color */
-.coupon .front {
-  background-color: #f9c8dc; /* pink pastel */
+/* Coupon flip card */
+.coupon {
+  background-color: transparent;
+  width: 300px;
+  height: 180px;
+  perspective: 1000px;
+  margin: 20px auto;
 }
 
-/* Back side color */
-.coupon .back {
-  background-color: #ffeebd; /* light yellow pastel */
-  transform: rotateY(180deg);
-}
-
-/* Description text under coupon */
-.description {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #1a1a1a;
-  width: 80%;
-  max-width: 400px;
+.coupon-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
   text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
