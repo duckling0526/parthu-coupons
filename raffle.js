@@ -57,14 +57,36 @@ function flipCard() {
 }
 
 function lockCoupon() {
-  usedCoupons.push(currentCoupon);
-  localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
-  document.getElementById("share-btn").style.display = "inline-block";
-}
+  if (currentCoupon && !usedCoupons.some(u => u.title === currentCoupon.title)) {
+    usedCoupons.push(currentCoupon);
+    localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".coupon-card").addEventListener("click", flipCard);
-  document.getElementById("reroll-btn").addEventListener("click", showRandomCoupon);
-  document.getElementById("pick-btn").addEventListener("click", lockCoupon);
-  showRandomCoupon();
-});
+    document.getElementById("pick-btn").style.display = "none";
+    document.getElementById("reroll-btn").style.display = "none";
+
+    const shareBtn = document.getElementById("share-btn");
+    shareBtn.style.display = "inline-block";
+
+    // Add share click behavior
+    shareBtn.onclick = async () => {
+      const textToShare = `${currentCoupon.title}\n\n${currentCoupon.description}`;
+
+      // 1. Copy to clipboard
+      navigator.clipboard.writeText(textToShare).catch(() => {});
+
+      // 2. Try using phone's native share sheet
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "My Coupon 💗",
+            text: textToShare
+          });
+        } catch (err) {
+          console.log("Share canceled");
+        }
+      } else {
+        alert("coupon copied! now send it to niku 💗");
+      }
+    };
+  }
+}
