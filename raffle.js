@@ -32,7 +32,7 @@ let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
 
 // Get the card elements
-const card = document.querySelector(".coupon-card .flip-inner");
+const card = document.querySelector(".flip-inner");
 const front = document.querySelector(".flip-front");
 const back = document.querySelector(".flip-back");
 
