@@ -28,26 +28,30 @@ const coupons = [
   { title: "🍕 custom date night theme", description: "u pick the vibe. i plan the whole night. italy? outer space? u choose.", color: "#f5e5d0" }
 ];
 
+// === STATE ===
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
 
-// Get the card elements
+// === ELEMENTS ===
 const card = document.querySelector(".flip-inner");
 const front = document.querySelector(".flip-front");
 const back = document.querySelector(".flip-back");
 
+// === FUNCTIONS ===
 function showRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
+
   if (available.length === 0) {
-    front.innerHTML = "no more coupons 🥺";
-    back.innerHTML = "call niku for more coupons :*";
+    front.textContent = "no more coupons 🥺";
+    back.textContent = "call niku for more coupons :*";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
   card.classList.remove("flipped");
-  front.innerHTML = currentCoupon.title;
-  back.innerHTML = currentCoupon.description;
+
+  front.textContent = currentCoupon.title;
+  back.textContent = currentCoupon.description;
 
   document.querySelector(".coupon-card").style.setProperty("--coupon-color", currentCoupon.color);
 }
@@ -57,36 +61,16 @@ function flipCard() {
 }
 
 function lockCoupon() {
-  if (currentCoupon && !usedCoupons.some(u => u.title === currentCoupon.title)) {
-    usedCoupons.push(currentCoupon);
-    localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
-
-    document.getElementById("pick-btn").style.display = "none";
-    document.getElementById("reroll-btn").style.display = "none";
-
-    const shareBtn = document.getElementById("share-btn");
-    shareBtn.style.display = "inline-block";
-
-    // Add share click behavior
-    shareBtn.onclick = async () => {
-      const textToShare = `${currentCoupon.title}\n\n${currentCoupon.description}`;
-
-      // 1. Copy to clipboard
-      navigator.clipboard.writeText(textToShare).catch(() => {});
-
-      // 2. Try using phone's native share sheet
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "My Coupon 💗",
-            text: textToShare
-          });
-        } catch (err) {
-          console.log("Share canceled");
-        }
-      } else {
-        alert("coupon copied! now send it to niku 💗");
-      }
-    };
-  }
+  usedCoupons.push(currentCoupon);
+  localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
+  document.getElementById("pick-btn").style.display = "none";
+  document.getElementById("reroll-btn").style.display = "none";
+  document.getElementById("share-btn").style.display = "inline-block";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".coupon-card").addEventListener("click", flipCard);
+  document.getElementById("reroll-btn").addEventListener("click", showRandomCoupon);
+  document.getElementById("pick-btn").addEventListener("click", lockCoupon);
+  showRandomCoupon();
+});
