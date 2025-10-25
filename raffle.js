@@ -67,26 +67,29 @@ function lockCoupon() {
     const shareBtn = document.getElementById("share-btn");
     shareBtn.style.display = "inline-block";
 
-    // Add share click behavior
-    shareBtn.onclick = async () => {
-      const textToShare = `${currentCoupon.title}\n\n${currentCoupon.description}`;
+  // Show only share button under coupon
+  const shareBtn = document.getElementById("share-btn");
+  shareBtn.style.display = "block";
+  shareBtn.style.marginTop = "20px";
 
-      // 1. Copy to clipboard
-      navigator.clipboard.writeText(textToShare).catch(() => {});
+  // Define what happens when he clicks share
+  shareBtn.onclick = async () => {
+    const textToShare = `💗 COUPON UNLOCKED 💗\n\n${currentCoupon.title}\n\n${currentCoupon.description}`;
 
-      // 2. Try using phone's native share sheet
+    try {
+      // Use native share (mobile)
       if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "My Coupon 💗",
-            text: textToShare
-          });
-        } catch (err) {
-          console.log("Share canceled");
-        }
+        await navigator.share({
+          title: "my coupon 💗",
+          text: textToShare,
+        });
       } else {
+        // Fallback: copy to clipboard (desktop)
+        await navigator.clipboard.writeText(textToShare);
         alert("coupon copied! now send it to niku 💗");
       }
-    };
-  }
+    } catch (err) {
+      console.log("share canceled or failed", err);
+    }
+  };
 }
