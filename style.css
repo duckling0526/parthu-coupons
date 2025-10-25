@@ -52,12 +52,21 @@ button:hover, .cute-button:hover, .main-button:hover {
    COUPON CARD FLIP
 ========================= */
 
+/* Center Raffle Page */
+.raffle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 /* Container that holds the card */
 .coupon-card {
-  width: 380px; /* MEDIUM size */
-  height: 260px;
+  width: 340px; /* MEDIUM size */
+  height: 240px;
   perspective: 1000px; /* enables 3D effect */
-  margin-top: 20px;
+  margin: 20px 0 30px;
 }
 
 /* Inner rotating element */
