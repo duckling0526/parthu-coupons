@@ -28,16 +28,22 @@ const coupons = [
   { title: "🍕 custom date night theme", description: "u pick the vibe. i plan the whole night. italy? outer space? u choose.", color: "#f5e5d0" }
 ];
 
+// === STATE ===
 let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
 let currentCoupon = null;
 
-// Get the card elements
-const card = document.querySelector(".flip-inner");
+// === ELEMENTS ===
+const cardInner = document.querySelector(".flip-inner");
 const front = document.querySelector(".flip-front");
 const back = document.querySelector(".flip-back");
+const rerollBtn = document.getElementById("reroll-btn");
+const pickBtn = document.getElementById("pick-btn");
+const shareBtn = document.getElementById("share-btn");
 
+// === FUNCTIONS ===
 function showRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
+
   if (available.length === 0) {
     front.innerHTML = "no more coupons 🥺";
     back.innerHTML = "call niku for more coupons :*";
@@ -45,51 +51,50 @@ function showRandomCoupon() {
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
-  card.classList.remove("flipped");
-  front.innerHTML = currentCoupon.title;
-  back.innerHTML = currentCoupon.description;
 
-  document.querySelector(".coupon-card").style.setProperty("--coupon-color", currentCoupon.color);
+  cardInner.classList.remove("flipped");
+  front.innerHTML = `<h2>${currentCoupon.title}</h2>`;
+  back.innerHTML = `<p>${currentCoupon.description}</p>`;
+
+  document.querySelector(".coupon-card").style.backgroundColor = currentCoupon.color;
+
+  // reset buttons display
+  rerollBtn.style.display = "inline-block";
+  pickBtn.style.display = "inline-block";
+  shareBtn.style.display = "none";
 }
 
 function flipCard() {
-  card.classList.toggle("flipped");
+  cardInner.classList.toggle("flipped");
 }
 
 function lockCoupon() {
-  if (currentCoupon && !usedCoupons.some(u => u.title === currentCoupon.title)) {
+  if (!usedCoupons.some(c => c.title === currentCoupon.title)) {
     usedCoupons.push(currentCoupon);
     localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
+  }
 
-    document.getElementById("pick-btn").style.display = "none";
-    document.getElementById("reroll-btn").style.display = "none";
-
-    const shareBtn = document.getElementById("share-btn");
-    shareBtn.style.display = "inline-block";
-
-  // Show only share button under coupon
-  const shareBtn = document.getElementById("share-btn");
-  shareBtn.style.display = "block";
-  shareBtn.style.marginTop = "20px";
-
-  // Define what happens when he clicks share
-  shareBtn.onclick = async () => {
-    const textToShare = `💗 COUPON UNLOCKED 💗\n\n${currentCoupon.title}\n\n${currentCoupon.description}`;
-
-    try {
-      // Use native share (mobile)
-      if (navigator.share) {
-        await navigator.share({
-          title: "my coupon 💗",
-          text: textToShare,
-        });
-      } else {
-        // Fallback: copy to clipboard (desktop)
-        await navigator.clipboard.writeText(textToShare);
-        alert("coupon copied! now send it to niku 💗");
-      }
-    } catch (err) {
-      console.log("share canceled or failed", err);
-    }
-  };
+  rerollBtn.style.display = "none";
+  pickBtn.style.display = "none";
+  shareBtn.style.display = "inline-block";
 }
+
+shareBtn.onclick = async () => {
+  const message = `${currentCoupon.title}\n\n${currentCoupon.description}`;
+  navigator.clipboard.writeText(message).catch(() => {});
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: "my coupon 💗", text: message });
+    } catch (err) {}
+  } else {
+    alert("copied! send it to niku 💗");
+  }
+};
+
+// === INIT ===
+document.querySelector(".coupon-card").addEventListener("click", flipCard);
+rerollBtn.addEventListener("click", showRandomCoupon);
+pickBtn.addEventListener("click", lockCoupon);
+
+showRandomCoupon();
