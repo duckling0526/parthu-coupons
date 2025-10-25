@@ -9,23 +9,24 @@
 </head>
 
 <body>
-  <div class="raffle-container">
 
+  <div class="raffle-container">
     <h1>💝 your random coupon 💝</h1>
 
-    <div class="coupon">
-      <div class="card">
-        <div class="front" id="coupon-title"></div>
-        <div class="back" id="coupon-desc"></div>
+    <!-- THE ACTUAL CARD -->
+    <div class="coupon-card">
+      <div class="flip-inner">
+        <div class="flip-front"></div>
+        <div class="flip-back"></div>
       </div>
     </div>
 
+    <!-- BUTTONS -->
     <div class="button-row">
-      <button id="reroll-btn" class="cute-button">pick a different one</button>
-      <button id="pick-btn" class="cute-button">i choose this one!</button>
-      <button id="share-btn" class="cute-button" style="display:none;">share this with niku to collect! &lt;3</button>
+      <button id="reroll-btn" class="main-button">pick a different one</button>
+      <button id="pick-btn" class="main-button">i choose this one!</button>
+      <button id="share-btn" class="main-button" style="display:none;">share this with niku to collect! &lt;3</button>
     </div>
-
   </div>
 
   <script src="raffle.js"></script>
