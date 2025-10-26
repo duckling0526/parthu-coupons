@@ -73,6 +73,13 @@ function lockCoupon() {
   document.getElementById("pick-btn").style.display = "none";
   document.getElementById("reroll-btn").style.display = "none";
   document.getElementById("share-btn").style.display = "inline-block";
+   
+  // Add glow to the coupon card
+  const card = document.querySelector(".coupon-card");
+  card.classList.add("glow-card");
+  setTimeout(() => {
+    card.classList.remove("glow-card");
+  }, 1600);
 }
 
 function shareCoupon() {
