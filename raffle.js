@@ -74,12 +74,15 @@ function lockCoupon() {
   document.getElementById("reroll-btn").style.display = "none";
   document.getElementById("share-btn").style.display = "inline-block";
    
-  // Add glow to the coupon card
-  const card = document.querySelector(".coupon-card");
-  card.classList.add("glow-card");
-  setTimeout(() => {
-    card.classList.remove("glow-card");
-  }, 1600);
+// Add glow to the coupon card + background fade
+const card = document.querySelector(".coupon-card");
+card.classList.add("glow-card");
+document.body.classList.add("glow-bg");
+
+setTimeout(() => {
+  card.classList.remove("glow-card");
+  document.body.classList.remove("glow-bg");
+}, 6600); // matches your 6.6s glow
 }
 
 function shareCoupon() {
