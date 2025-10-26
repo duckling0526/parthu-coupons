@@ -59,7 +59,7 @@ function showRandomCoupon() {
   frontTitle.textContent = currentCoupon.title;
   backDesc.textContent = currentCoupon.description;
 
-  document.querySelector(".coupon-card").style.backgroundColor = currentCoupon.color;
+document.querySelector(".coupon-card").style.setProperty("--coupon-color", currentCoupon.color);
 }
 
 function flipCard() {
