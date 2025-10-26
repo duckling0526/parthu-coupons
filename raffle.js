@@ -82,12 +82,31 @@ function shareCoupon() {
 
   navigator.clipboard.writeText(message).then(() => {
     const shareBtn = document.getElementById("share-btn");
+
+    /* Soft glow */
+    shareBtn.classList.add("glow");
+    setTimeout(() => {
+      shareBtn.classList.remove("glow");
+    }, 1400);
+
+    /* Floating hearts */
+    for (let i = 0; i < 6; i++) {
+      const heart = document.createElement("div");
+      heart.textContent = "💗";
+      heart.classList.add("heart-floating");
+      heart.style.left = `${shareBtn.offsetLeft + shareBtn.offsetWidth/2 - 8 + (Math.random()*40-20)}px`;
+      heart.style.top = `${shareBtn.offsetTop - 10}px`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 1800);
+    }
+
+    /* Text feedback */
+    const originalText = shareBtn.textContent;
     shareBtn.textContent = "copied to clipboard 💗";
     setTimeout(() => {
-      shareBtn.textContent = "share this with niku 💗";
+      shareBtn.textContent = originalText;
     }, 1500);
-  }).catch(() => {
-    alert("copy failed — but i still love u 😔💗");
   });
 }
 
