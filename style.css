@@ -128,7 +128,7 @@ button:hover, .cute-button:hover, .main-button:hover {
 .heart-floating {
   position: absolute;
   font-size: 1.4rem;
-  animation: floatUp 1.8s ease-out forwards;
+  animation: floatUp 10s ease-out forwards;
   pointer-events: none;
   user-select: none;
 }
@@ -146,18 +146,20 @@ button:hover, .cute-button:hover, .main-button:hover {
 }
 
 @keyframes cardGlow {
-  0% { box-shadow: 0 0 0px rgba(255, 215, 100, 0.0); }
-  40% { box-shadow: 0 0 32px rgba(255, 215, 100, 0.75); }
-  100% { box-shadow: 0 0 0px rgba(255, 215, 100, 0.0); }
+  0% { box-shadow: 0 0 0px rgba(255, 175, 90, 0.0); }
+  40% { box-shadow: 0 0 40px rgba(255, 175, 90, 0.85); }
+  100% { box-shadow: 0 0 15px rgba(255, 175, 90, 0.45); } /* <-- keeps a soft afterglow */
 }
 
-body.glow-bg {
-  animation: bgFade 6.6s ease-out;
+/* ===== PERMANENT SUNSET BACKGROUND AFTER SELECTION ===== */
+body.sunset-bg {
+  background: linear-gradient(135deg, #f7c07a, #f8a284, #ce7ca6);
+  background-size: 200% 200%;
+  animation: sunsetShift 18s ease infinite; /* slow dreamy movement */
 }
 
-@keyframes bgFade {
-  0% { background-color: #a6d3f5; } /* your usual soft blue */
-  40% { background-color: #ffefb4; } /* warm golden cream */
-  100% { background-color: #a6d3f5; } /* back to original */
+@keyframes sunsetShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-
