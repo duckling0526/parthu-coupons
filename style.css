@@ -142,7 +142,7 @@ button:hover, .cute-button:hover, .main-button:hover {
 /* ===== COUPON CARD SOFT GLOW WHEN LOCKED ===== */
 .coupon-card.glow-card .flip-front,
 .coupon-card.glow-card .flip-back {
-  animation: cardGlow 6.6s ease-out forwards;
+  box-shadow: 0 0 42px rgba(255, 248, 228, 0.85);
 }
 
 @keyframes cardGlow {
