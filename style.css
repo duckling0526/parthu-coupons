@@ -161,7 +161,7 @@ button:hover, .cute-button:hover, .main-button:hover {
 body.sunset-bg {
   background: linear-gradient(135deg, #f7c07a, #f8a284, #ce7ca6);
   background-size: 200% 200%;
-  animation: sunsetShift 18s ease infinite; /* slow dreamy movement */
+  animation: sunsetShift 5.5s ease infinite; /* slow dreamy movement */
 }
 
 @keyframes sunsetShift {
