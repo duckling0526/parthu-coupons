@@ -78,16 +78,16 @@ function lockCoupon() {
 function shareCoupon() {
   if (!currentCoupon) return;
 
-  const message = `${currentCoupon.title}\n\n${currentCoupon.description}\n\n(https://duckling0526.github.io/parthu-coupons/)`;
+  const message = `${currentCoupon.title}\n\n${currentCoupon.description}\n\nredeem on: https://duckling0526.github.io/parthu-coupons/ 💗`;
 
   navigator.clipboard.writeText(message).then(() => {
     const shareBtn = document.getElementById("share-btn");
-    const originalText = shareBtn.textContent;
     shareBtn.textContent = "copied to clipboard 💗";
-    
     setTimeout(() => {
-      shareBtn.textContent = originalText;
-    }, 1200);
+      shareBtn.textContent = "share this with niku 💗";
+    }, 1500);
+  }).catch(() => {
+    alert("copy failed — but i still love u 😔💗");
   });
 }
 
