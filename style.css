@@ -63,10 +63,13 @@ button:hover, .cute-button:hover, .main-button:hover {
 
 /* Container that holds the card */
 .coupon-card {
-  width: 340px; /* MEDIUM size */
+  width: 340px;
   height: 240px;
-  perspective: 1000px; /* enables 3D effect */
+  perspective: 1000px;
   margin: 20px 0 30px;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 /* Inner rotating element */
@@ -77,6 +80,7 @@ button:hover, .cute-button:hover, .main-button:hover {
   transform-style: preserve-3d;
   transition: transform 0.7s ease;
   cursor: pointer;
+  pointer-events: none;
 }
 
 /* Flip class triggered by JS */
@@ -116,4 +120,6 @@ button:hover, .cute-button:hover, .main-button:hover {
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
 }
