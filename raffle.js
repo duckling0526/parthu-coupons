@@ -83,12 +83,7 @@ function shareCoupon() {
   navigator.clipboard.writeText(message).then(() => {
     const shareBtn = document.getElementById("share-btn");
 
-    /* Soft glow */
-    shareBtn.classList.add("glow");
-    setTimeout(() => {
-      shareBtn.classList.remove("glow");
-    }, 1400);
-
+    
     /* Floating hearts */
     for (let i = 0; i < 6; i++) {
       const heart = document.createElement("div");
