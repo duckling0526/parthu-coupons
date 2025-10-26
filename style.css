@@ -124,18 +124,6 @@ button:hover, .cute-button:hover, .main-button:hover {
   z-index: 10;
 }
 
-/* ===== SHARE BUTTON ANIMATION ===== */
-
-#share-btn.glow {
-  animation: softglow 1.4s ease-out;
-}
-
-@keyframes softglow {
-  0% { box-shadow: 0 0 0px rgba(255,182,193,0.0); }
-  40% { box-shadow: 0 0 16px rgba(255,182,193,0.85); }
-  100% { box-shadow: 0 0 0px rgba(255,182,193,0.0); }
-}
-
 /* Floating hearts container */
 .heart-floating {
   position: absolute;
