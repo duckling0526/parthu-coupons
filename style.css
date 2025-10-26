@@ -39,7 +39,7 @@ button, .cute-button, .main-button {
   font-family: 'Patrick Hand', cursive;
   font-size: 1.15rem;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.25s ease, box-shadow 0.4s ease;
   margin-top: 15px;
 }
 
@@ -132,7 +132,7 @@ button:hover, .cute-button:hover, .main-button:hover {
 
 @keyframes softglow {
   0% { box-shadow: 0 0 0px rgba(255,182,193,0.0); }
-  50% { box-shadow: 0 0 18px rgba(255,182,193,0.65); }
+  40% { box-shadow: 0 0 16px rgba(255,182,193,0.85); }
   100% { box-shadow: 0 0 0px rgba(255,182,193,0.0); }
 }
 
