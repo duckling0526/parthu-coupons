@@ -75,9 +75,26 @@ function lockCoupon() {
   document.getElementById("share-btn").style.display = "inline-block";
 }
 
+function shareCoupon() {
+  if (!currentCoupon) return;
+
+  const message = `${currentCoupon.title}\n\n${currentCoupon.description}\n\n(https://duckling0526.github.io/parthu-coupons/)`;
+
+  navigator.clipboard.writeText(message).then(() => {
+    const shareBtn = document.getElementById("share-btn");
+    const originalText = shareBtn.textContent;
+    shareBtn.textContent = "copied to clipboard 💗";
+    
+    setTimeout(() => {
+      shareBtn.textContent = originalText;
+    }, 1200);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".coupon-card").addEventListener("click", flipCard);
   document.getElementById("reroll-btn").addEventListener("click", showRandomCoupon);
   document.getElementById("pick-btn").addEventListener("click", lockCoupon);
+  document.getElementById("share-btn").addEventListener("click", shareCoupon);
   showRandomCoupon();
 });
