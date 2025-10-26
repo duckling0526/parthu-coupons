@@ -142,11 +142,22 @@ button:hover, .cute-button:hover, .main-button:hover {
 /* ===== COUPON CARD SOFT GLOW WHEN LOCKED ===== */
 .coupon-card.glow-card .flip-front,
 .coupon-card.glow-card .flip-back {
-  animation: cardGlow 1.6s ease-out;
+  animation: cardGlow 6.6s ease-out;
 }
 
 @keyframes cardGlow {
-  0% { box-shadow: 0 0 0px rgba(255, 182, 193, 0.0); }
-  40% { box-shadow: 0 0 26px rgba(255, 182, 193, 0.55); }
-  100% { box-shadow: 0 0 0px rgba(255, 182, 193, 0.0); }
+  0% { box-shadow: 0 0 0px rgba(255, 215, 100, 0.0); }
+  40% { box-shadow: 0 0 32px rgba(255, 215, 100, 0.75); }
+  100% { box-shadow: 0 0 0px rgba(255, 215, 100, 0.0); }
 }
+
+body.glow-bg {
+  animation: bgFade 6.6s ease-out;
+}
+
+@keyframes bgFade {
+  0% { background-color: #a6d3f5; } /* your usual soft blue */
+  40% { background-color: #ffefb4; } /* warm golden cream */
+  100% { background-color: #a6d3f5; } /* back to original */
+}
+
