@@ -74,10 +74,10 @@ function lockCoupon() {
   document.getElementById("reroll-btn").style.display = "none";
   document.getElementById("share-btn").style.display = "inline-block";
    
-// Add glow to the coupon card + background fade
+// Apply permanent sunset mood
 const card = document.querySelector(".coupon-card");
 card.classList.add("glow-card");
-document.body.classList.add("glow-bg");
+document.body.classList.add("sunset-bg");
 
 setTimeout(() => {
   card.classList.remove("glow-card");
