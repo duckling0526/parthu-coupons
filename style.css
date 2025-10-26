@@ -146,9 +146,15 @@ button:hover, .cute-button:hover, .main-button:hover {
 }
 
 @keyframes cardGlow {
-  0% { box-shadow: 0 0 0px rgba(255, 175, 90, 0.0); }
-  40% { box-shadow: 0 0 40px rgba(255, 175, 90, 0.85); }
-  100% { box-shadow: 0 0 15px rgba(255, 175, 90, 0.45); } /* <-- keeps a soft afterglow */
+  0% {
+    box-shadow: 0 0 0px rgba(255, 248, 228, 0.0);
+  }
+  40% {
+    box-shadow: 0 0 75px rgba(255, 248, 228, 0.95);
+  }
+  100% {
+ box-shadow: 0 0 32px rgba(255, 248, 228, 0.75);
+  }
 }
 
 /* ===== PERMANENT SUNSET BACKGROUND AFTER SELECTION ===== */
