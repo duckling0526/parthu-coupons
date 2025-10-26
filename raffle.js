@@ -37,23 +37,29 @@ const card = document.querySelector(".flip-inner");
 const front = document.querySelector(".flip-front");
 const back = document.querySelector(".flip-back");
 
-// === FUNCTIONS ===
+// Give the card structure so text is visible again
+front.innerHTML = `<h2 class="title"></h2>`;
+back.innerHTML = `<p class="desc"></p>`;
+
+const frontTitle = front.querySelector(".title");
+const backDesc = back.querySelector(".desc");
+
 function showRandomCoupon() {
   const available = coupons.filter(c => !usedCoupons.some(u => u.title === c.title));
 
   if (available.length === 0) {
-    front.textContent = "no more coupons 🥺";
-    back.textContent = "call niku for more coupons :*";
+    frontTitle.textContent = "no more coupons 🥺";
+    backDesc.textContent = "call niku for more coupons :*";
     return;
   }
 
   currentCoupon = available[Math.floor(Math.random() * available.length)];
   card.classList.remove("flipped");
 
-  front.textContent = currentCoupon.title;
-  back.textContent = currentCoupon.description;
+  frontTitle.textContent = currentCoupon.title;
+  backDesc.textContent = currentCoupon.description;
 
-  document.querySelector(".coupon-card").style.setProperty("--coupon-color", currentCoupon.color);
+  document.querySelector(".coupon-card").style.backgroundColor = currentCoupon.color;
 }
 
 function flipCard() {
@@ -63,6 +69,7 @@ function flipCard() {
 function lockCoupon() {
   usedCoupons.push(currentCoupon);
   localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
+
   document.getElementById("pick-btn").style.display = "none";
   document.getElementById("reroll-btn").style.display = "none";
   document.getElementById("share-btn").style.display = "inline-block";
