@@ -183,3 +183,20 @@ body.sunset-bg {
 .memory-gallery img:hover {
   transform: scale(1.05);
 }
+
+.reset-button {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: rgba(87,74,69,0.35);
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0.25;
+  transition: 0.3s ease;
+}
+
+.reset-button:hover {
+  opacity: 1;
+}
