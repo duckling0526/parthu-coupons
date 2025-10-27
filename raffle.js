@@ -122,3 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("share-btn").addEventListener("click", shareCoupon);
   showRandomCoupon();
 });
+
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  localStorage.removeItem("usedCoupons");
+  location.reload();
+});
+
