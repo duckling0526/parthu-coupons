@@ -127,19 +127,18 @@ button:hover, .main-button:hover {
 ========================= */
 .coupon-card.glow-card .flip-front,
 .coupon-card.glow-card .flip-back {
-  box-shadow: 0 0 48px rgba(255, 248, 228, 0.9);
+  box-shadow: 0 0 48px rgba(255, 244, 230, 1);
 }
 
-/* =========================
-   SUNSET BACKGROUND AFTER SELECTION
-========================= */
+/* ===== VANILLA TO ROSE BACKGROUND AFTER SELECTION ===== */
 body.sunset-bg {
-  background: linear-gradient(135deg, #f7c07a, #f8a284, #ce7ca6);
+  background: linear-gradient(135deg, #FDF9F3, #E8C9C1, #C79AA4);
   background-size: 200% 200%;
-  animation: sunsetShift 15s ease infinite; /* slow dreamy movement */
+  animation: vanillaRoseShift 14s ease-in-out infinite;
 }
 
-@keyframes sunsetShift {
+/* Gentle movement for dreamlike feel */
+@keyframes vanillaRoseShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
