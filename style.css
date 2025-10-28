@@ -152,7 +152,7 @@ body.sunset-bg {
   justify-content: center;
   gap: 18px;
   padding: 16px 24px;
-  margin-top: 45px; /* balanced below button */
+  margin-top: 20px; /* balanced below button */
   overflow: hidden;
   animation: fadeInOnce 1.4s ease-in-out forwards;
   position: relative;
