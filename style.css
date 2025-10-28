@@ -145,29 +145,45 @@ body.sunset-bg {
 }
 
 /* =========================
-   FLOATING MEMORY GALLERY (Horizontal Scroll)
+   MEMORY GALLERY — Balanced Film Roll Style
 ========================= */
 .memory-gallery {
   display: flex;
-  overflow-x: auto;
+  justify-content: center;
   gap: 18px;
   padding: 20px 28px;
-  margin-top: 40px;
-  scroll-snap-type: x mandatory;
-  border-top: 1px solid rgba(87,74,69,0.1);
+  margin-top: 55px; /* even spacing below button */
+  overflow: hidden;
+  animation: fadeIn 1.2s ease-in-out forwards;
 }
 
 .memory-gallery img {
-  height: 140px;
+  height: 130px;
   border-radius: 12px;
-  scroll-snap-align: center;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: filmRoll 22s linear infinite;
+  opacity: 0;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+  transition: transform 0.3s ease, opacity 0.8s ease;
 }
 
 .memory-gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+/* Fade in gallery softly */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle rolling animation — continuous left-right drift */
+@keyframes filmRoll {
+  0% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(-25px); }
+  100% { transform: translateX(0); }
 }
 
 .reset-button {
