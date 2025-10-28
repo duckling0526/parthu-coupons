@@ -1,3 +1,4 @@
+
 /* =========================
    GLOBAL STYLING — Modern Minimal Romance
 ========================= */
@@ -15,11 +16,9 @@ body {
 .centered, .raffle-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  padding-top: 40px; /* nice breathing room from top */
-  box-sizing: border-box;
 }
 
 /* =========================
@@ -63,8 +62,8 @@ button:hover, .main-button:hover {
    COUPON CARD — Warm Paper
 ========================= */
 .coupon-card {
-  width: 300px;
-  height: 210px;
+  width: 340px;
+  height: 240px;
   perspective: 1000px;
   margin: 20px 0 30px;
   position: relative;
@@ -147,17 +146,16 @@ body.sunset-bg {
 }
 
 /* =========================
-   MEMORY GALLERY — Balanced, Static Fade-In + Gentle Roll
+   MEMORY GALLERY — Balanced Film Roll Style
 ========================= */
 .memory-gallery {
   display: flex;
   justify-content: center;
   gap: 18px;
-  padding: 16px 24px;
-  margin-top: 20px; /* balanced below button */
+  padding: 20px 28px;
+  margin-top: 55px; /* even spacing below button */
   overflow: hidden;
-  animation: fadeInOnce 1.4s ease-in-out forwards;
-  position: relative;
+  animation: fadeIn 1.2s ease-in-out forwards;
 }
 
 .memory-gallery img {
@@ -165,27 +163,27 @@ body.sunset-bg {
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  animation: filmRoll 14s linear infinite; /* a little faster roll */
+  animation: filmRoll 22s linear infinite;
   opacity: 0;
-  animation-delay: 0.3s; /* smooth entrance */
+  animation-delay: calc(var(--i, 0) * 0.1s);
   transition: transform 0.3s ease, opacity 0.8s ease;
-  animation-fill-mode: forwards;
 }
 
 .memory-gallery img:hover {
   transform: scale(1.06);
+  opacity: 1;
 }
 
-/* Fade in just once, stays visible */
-@keyframes fadeInOnce {
-  from { opacity: 0; transform: translateY(25px); }
+/* Fade in gallery softly */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Gentle, continuous left-right roll */
+/* Subtle rolling animation — continuous left-right drift */
 @keyframes filmRoll {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-18px); }
+  0% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(-25px); }
   100% { transform: translateX(0); }
 }
 
