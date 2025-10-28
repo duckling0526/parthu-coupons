@@ -144,7 +144,7 @@ body.sunset-bg {
 }
 
 /* =========================
-   MEMORY GALLERY — Original Centered Layout
+   MEMORY GALLERY — No Fade, No Animation
 ========================= */
 .memory-gallery {
   display: flex;
@@ -164,6 +164,8 @@ body.sunset-bg {
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.10);
   transition: transform 0.3s ease;
+  opacity: 1; /* stays visible */
+  animation: none !important; /* kills all fading/rolling */
 }
 
 .memory-gallery img:hover {
