@@ -188,26 +188,6 @@ body.sunset-bg {
   transition: 0.3s ease;
 }
 
-/* =========================
-   SPOTIFY PLAYER
-========================= */
-.spotify-player {
-  margin-top: 35px;
-  margin-bottom: 20px;
-  width: 90%;
-  max-width: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease;
-}
-
-.spotify-player:hover {
-  transform: scale(1.02);
-}
 
 .reset-button:hover {
   opacity: 1;
