@@ -13,7 +13,7 @@ const coupons = [
   { title: "🥰 one flirty paragraph", description: "u get a whole paragraph of me being down bad. written like a wattpad author in love", color: "#f5d0f0" },
   { title: "💌 surprise letter", description: "i send u a letter. handwritten or typed. maybe (very possibly) chaotic. but most definitely from my heart", color: "#f0f5d0" },
   { title: "🧠 deep talk night", description: "u ask me anything. i ask u anything. we solve the many many mysteries of the universe together", color: "#d0f5f5" },
-  { title: "📸 10/10 insta bf", description: "i hype u up, i assist w picking out ur fits + take pics + and comment like ur #1 fan (bc i AM)", color: "#e4d0f5" },
+  { title: "📸 10/10 insta gf", description: "i hype u up, i assist w picking out ur fits + take pics + and comment like ur #1 fan (bc i AM)", color: "#e4d0f5" },
   { title: "🍿 facetime movie night", description: "i stream the movie. we talk over half of it. u fall asleep. we get .. distracted.. i love u", color: "#f5d8d0" },
   { title: "🛍️ mini gift drop", description: "u pick a lil thing you want (under $20) and i surprise-send it like a lil fairy gf", color: "#d0f5db" },
   { title: "🌄 morning hype texts", description: "i send u chaotic & sweet gm texts for a week so ur days start warm and fuzzy like christmas", color: "#f5f0d0" },
