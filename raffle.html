@@ -49,6 +49,11 @@
   
   <script src="raffle.js?v=3"></script>
 
+<script>
+  document.querySelectorAll('.memory-gallery img').forEach((img, i) => {
+    img.style.setProperty('--i', i);
+  });
+</script>
   
 </body>
 </html>
