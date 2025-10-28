@@ -58,8 +58,6 @@ function showRandomCoupon() {
 
   frontTitle.textContent = currentCoupon.title;
   backDesc.textContent = currentCoupon.description;
-
-document.querySelector(".coupon-card").style.setProperty("--coupon-color", currentCoupon.color);
 }
 
 function flipCard() {
@@ -121,6 +119,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("pick-btn").addEventListener("click", lockCoupon);
   document.getElementById("share-btn").addEventListener("click", shareCoupon);
   showRandomCoupon();
+
+  // ✅ Reset button moved here so it attaches after DOM is ready
+  const resetBtn = document.getElementById("reset-btn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      localStorage.removeItem("usedCoupons");
+      usedCoupons = [];
+      document.getElementById("pick-btn").style.display = "inline-block";
+      document.getElementById("reroll-btn").style.display = "inline-block";
+      document.getElementById("share-btn").style.display = "none";
+      document.querySelector(".coupon-card").classList.remove("glow-card");
+      document.body.classList.remove("sunset-bg");
+      showRandomCoupon();
+    });
+  }
 });
 
 
