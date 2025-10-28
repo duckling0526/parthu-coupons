@@ -145,16 +145,17 @@ body.sunset-bg {
 }
 
 /* =========================
-   MEMORY GALLERY — Balanced Film Roll Style
+   MEMORY GALLERY — Balanced, Static Fade-In + Gentle Roll
 ========================= */
 .memory-gallery {
   display: flex;
   justify-content: center;
   gap: 18px;
-  padding: 20px 28px;
-  margin-top: 55px; /* even spacing below button */
+  padding: 16px 24px;
+  margin-top: 45px; /* balanced below button */
   overflow: hidden;
-  animation: fadeIn 1.2s ease-in-out forwards;
+  animation: fadeInOnce 1.4s ease-in-out forwards;
+  position: relative;
 }
 
 .memory-gallery img {
@@ -162,27 +163,27 @@ body.sunset-bg {
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  animation: filmRoll 22s linear infinite;
+  animation: filmRoll 14s linear infinite; /* a little faster roll */
   opacity: 0;
-  animation-delay: calc(var(--i, 0) * 0.1s);
+  animation-delay: 0.3s; /* smooth entrance */
   transition: transform 0.3s ease, opacity 0.8s ease;
+  animation-fill-mode: forwards;
 }
 
 .memory-gallery img:hover {
   transform: scale(1.06);
-  opacity: 1;
 }
 
-/* Fade in gallery softly */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+/* Fade in just once, stays visible */
+@keyframes fadeInOnce {
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Subtle rolling animation — continuous left-right drift */
+/* Gentle, continuous left-right roll */
 @keyframes filmRoll {
-  0% { transform: translateX(0); opacity: 1; }
-  50% { transform: translateX(-25px); }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-18px); }
   100% { transform: translateX(0); }
 }
 
